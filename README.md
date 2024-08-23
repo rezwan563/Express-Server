@@ -10,10 +10,12 @@ Here I will start with how I've setup the project. And issues I've faced while s
 
 I have started with ```yarn init``` command. This created a list of files withing the project folder
 
+```
 project_folder/
 ├── package.json
 ├── README.md
 └── yarn.lock
+```
 
 The **package.json** file contains
 
