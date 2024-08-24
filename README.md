@@ -59,7 +59,7 @@ It helps to run several command parallely. It reduces command you've to write wh
 
 This simplifies the development server running process. The command will check if anything changes in ```.ts``` file it will compile with typescript compiler and convert it to javascript. And the nodemon will ensure to restart the server if any code changes. The backslash ```\``` is used to escape ```"``` mark. For more details follow the official page of [Concurrently](https://www.npmjs.com/package/concurrently).
 
-To use typescript I needed a typscript configuration file. Here, I've create a **tsconfig.json** file. After lots of trial and error I've found the configuration that worked for me. The **tsconfig.json** file contains
+To use typescript I needed a typescript configuration file. Here, I've create a **tsconfig.json** file. After lots of trial and error I've found the configuration that worked for me. The **tsconfig.json** file contains
 
 ```json
 {
