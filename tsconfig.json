@@ -3,20 +3,20 @@
       /* Base Options: */
       "esModuleInterop": true,
       "skipLibCheck": true,
-      "target": "es2022",
+      "target": "ESNext",
       "allowJs": true,
       "resolveJsonModule": true,
-      "moduleDetection": "force",
       "isolatedModules": true,
       /* Strictness */
       "strict": true,
       "noUncheckedIndexedAccess": true,
       /* If transpiling with TypeScript: */
-      "moduleResolution": "NodeNext",
-      "module": "NodeNext",
+      "moduleResolution": "node",
+      "module": "commonjs",
       "outDir": "dist",
       "sourceMap": true,
       /* If your code doesn't run in the DOM: */
-      "lib": ["es2022", "dom"]
-    }
+      "lib": ["ESNext", "dom"]
+    },
+    "include": ["src/**/*.ts"],
   }
