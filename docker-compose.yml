@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: toV!0jvojQq2lgb
+    ports:
+      - "5435:5432"  # Map port 5435 on the host to port 5432 in the container
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8081:8080"  # Map port 8081 on the host to port 8080 in the container
+  
+  # api:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "4000:4000"
+  #   environment:
+  #     - DATABASE_URL=value
+
+
+volumes:
+  pgdata:
