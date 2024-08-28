@@ -23,9 +23,9 @@ model Student {
   gradeLevel      Int
   enrollmentDate  DateTime @default(now())
   address         String?
-  contactNumber   Int
+  contactNumber   String
   email           String
   guardianName    String
-  guardianContact Int
+  guardianContact String
   studentStatus   String
 }

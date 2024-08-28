@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import studentService from "./student.service";
-import prisma from "../../../prisma/client";
 
 class StudentController {
   async createStudent(req: Request, res: Response) {
