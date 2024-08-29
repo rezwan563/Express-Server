@@ -8,11 +8,12 @@ const studentRoute = Router();
 
 studentRoute
 .route('/')
-.get(() => studentController.getStudent)
-.post(() => studentController.createStudent)
+.get(studentController.getStudent)
+.post(studentController.createStudent)
 
 studentRoute
 .route('/:id')
+.get(studentController.getStudent)
 .put(() => console.log('Write put controller'))
 .delete(() => console.log('Write delete controller'))
 

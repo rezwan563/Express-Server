@@ -41,7 +41,6 @@ Then  I've added some packages. After installing the packages package.json file 
   }
   
 }
-
 ```
 
 I want to talk about serveral scripts in package.json. Here I've used [Concurrently](https://www.npmjs.com/package/concurrently).
@@ -78,4 +77,15 @@ To use typescript I needed a typescript configuration file. Here, I've create a 
   }
   ```
 
-I've used this [Typescript with node](https://www.totaltypescript.com/typescript-and-node) guide to setup the **tsconfig.json**. However, since I was using [yarn](https://yarnpkg.com/) I had to made some modification to the guide and ended up with the tsconfig.json found above.
+I've used this [Typescript with node](https://www.totaltypescript.com/typescript-and-node) guide to setup the **tsconfig.json**. However, when I run **pnpm dev** it started the development server but I couldn't access the **api/v1/student** route. In this endpoint I wrote the business logic to display all the students. I couldn't find what was wrong with my code. Besides, there was no error in the terminal. Then, I changed my dev script to this
+
+```json
+{
+  "dev": "ts-node-dev --respawn src/server.ts",
+}
+
+It provided helpful error message that my generateStudentFilter not found. I added 
+
+```export default generateStudentFilter```
+
+After this the development server statrs and the getStudent methods worked as expected.

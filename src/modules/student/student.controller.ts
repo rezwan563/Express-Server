@@ -17,7 +17,7 @@ class StudentController {
 
   async getStudent(req: Request, res: Response) {
     const id = Number(req.params.id);
-    const query = req.query as any;
+    const query = req.query;
     let student;
 
     try {

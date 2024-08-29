@@ -51,3 +51,5 @@ const generateStudentFilter = (query: any) => {
   }
   return filter;
 };
+
+export default generateStudentFilter;

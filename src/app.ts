@@ -1,4 +1,5 @@
 import express, { Application } from "express";
+import studentRoute from "./modules/student/student.routes";
 
 
 const app: Application = express()
@@ -11,6 +12,8 @@ app
 
 
 // Routes endpoint
+
+app.use('/api/v1/student', studentRoute);
 
 
 export default app;

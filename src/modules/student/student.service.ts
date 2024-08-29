@@ -1,4 +1,5 @@
 import prisma from "../../../prisma/client";
+import generateStudentFilter from "./generateStudentFilter";
 
 class StudentService {
   async createStudent(data: any) {
