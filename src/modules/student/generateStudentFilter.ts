@@ -31,14 +31,17 @@ const generateStudentFilter = (query: any) => {
   if (query.address) {
     filter.address = {
       contains: query.address,
-      mode: "insensitive",
+      mode: "insensitive"
     };
   }
   if (query.contactNumber) {
     filter.address = Number(query.contactNumber);
   }
   if (query.email) {
-    filter.email = query.email;
+    filter.email = {
+      contains: query.email,
+      mode: "insensitive"
+    };
   }
   if (query.guardianName) {
     filter.guardianName = query.guardianName;
