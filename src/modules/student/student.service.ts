@@ -23,6 +23,19 @@ class StudentService {
   async deleteStudent(id: number) {
     return prisma.student.delete({ where: { id } });
   }
+
+  async sortStudent(sortBy: { field: string; order: "asc" | "desc" }) {
+    const validField = ["firstName", "lastName", "enrollmentDate"];
+    if (!validField.includes(sortBy.field)) {
+      throw new Error("Invalid sort field");
+    }
+    const order = sortBy.order || "asc";
+    return prisma.student.findMany({
+      orderBy: {
+        [sortBy.field]: sortBy.order,
+      },
+    });
+  }
 }
 
 export default new StudentService();

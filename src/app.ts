@@ -5,6 +5,7 @@ import studentRoute from "./modules/student/student.routes";
 const app: Application = express()
 
 app.use(express.json())
+app.use(express.urlencoded({extended: true, limit: '2mb'}))
 
 app
 .route('/')

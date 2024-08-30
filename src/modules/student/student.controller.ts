@@ -44,6 +44,38 @@ class StudentController {
       return res.status(500).json({ message: "Internal server error" });
     }
   }
+
+  async deleteStudent(req: Request, res: Response) {
+    const id = Number(req.params.id);
+    let result;
+    try {
+      result = await studentService.deleteStudent(id);
+      return res.status(201).json({ message: "Student info deleted", result });
+    } catch (error) {
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+
+  async sortStudent(req: Request, res: Response) {
+    const field = req.query.field as string;
+    let order = req.query.order as string;
+
+    if (order != "asc" && order != "desc") {
+      order = "asc";
+    }
+
+    try {
+      const result = await studentService.sortStudent({
+        field,
+        order: order as "asc" | "desc",
+      });
+      return res
+        .status(200)
+        .json({ message: `Sorted student by ${field} order ${order}`, result });
+    } catch (error) {
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
 }
 
 export default new StudentController();

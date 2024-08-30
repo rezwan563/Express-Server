@@ -85,7 +85,7 @@ I've used this [Typescript with node](https://www.totaltypescript.com/typescript
 }
 ```
 
-It provided helpful error message that my generateStudentFilter not found. I added 
+It provided helpful error message that my generateStudentFilter not found. I added
 
 ```export default generateStudentFilter```
 
