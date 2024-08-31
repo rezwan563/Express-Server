@@ -5,17 +5,17 @@ const studentRoute = Router();
 
 // Define all student routes
 
+studentRoute
+  .route("/")
+  .get(studentController.getStudent)
+  .post(studentController.createStudent);
+
+studentRoute.route("/sortstudent").get(studentController.sortStudent);
 
 studentRoute
-.route('/')
-.get(studentController.getStudent)
-.post(studentController.createStudent)
-
-studentRoute
-.route('/:id')
-.get(studentController.getStudent)
-.put(() => console.log('Write put controller'))
-.delete(() => console.log('Write delete controller'))
-
+  .route("/:id")
+  .get(studentController.getStudent)
+  .put(studentController.editStudent)
+  .delete(studentController.deleteStudent);
 
 export default studentRoute;

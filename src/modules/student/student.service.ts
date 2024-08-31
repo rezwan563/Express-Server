@@ -17,7 +17,7 @@ class StudentService {
   }
 
   async editStudent(id: number, data: any) {
-    return prisma.student.update(data);
+    return prisma.student.update({ where: { id }, data });
   }
 
   async deleteStudent(id: number) {
@@ -29,12 +29,13 @@ class StudentService {
     if (!validField.includes(sortBy.field)) {
       throw new Error("Invalid sort field");
     }
-    const order = sortBy.order || "asc";
-    return prisma.student.findMany({
-      orderBy: {
-        [sortBy.field]: sortBy.order,
-      },
-    });
+    if (sortBy.field && sortBy.order) {
+      return prisma.student.findMany({
+        orderBy: {
+          [sortBy.field]: sortBy.order,
+        },
+      });
+    }
   }
 }
 

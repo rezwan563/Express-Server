@@ -26,7 +26,12 @@ class StudentController {
         return res.status(200).json({ message: "Student found", student });
       } else {
         student = await studentService.getStudent(undefined, query);
-        return res.status(200).json({ message: "Student list found", student });
+        if (Array.isArray(student) && student[0]) {
+          return res
+            .status(200)
+            .json({ message: "Student list found", student });
+        }
+        return res.status(200).json({ message: "No student found" });
       }
     } catch (error) {
       return res.status(500).json({ message: "Internal server error" });
@@ -59,19 +64,26 @@ class StudentController {
   async sortStudent(req: Request, res: Response) {
     const field = req.query.field as string;
     let order = req.query.order as string;
-
+    let result;
     if (order != "asc" && order != "desc") {
       order = "asc";
     }
 
     try {
-      const result = await studentService.sortStudent({
-        field,
-        order: order as "asc" | "desc",
-      });
+      console.log(`Sorting student based on ${field} and order ${order}`);
+      if (field && order) {
+        result = await studentService.sortStudent({
+          field,
+          order: order as "asc" | "desc",
+        });
+        return res.status(200).json({
+          message: `Sorted student by ${field} order ${order}`,
+          result,
+        });
+      }
       return res
         .status(200)
-        .json({ message: `Sorted student by ${field} order ${order}`, result });
+        .json({ message: "Provide sortby field and sort order" });
     } catch (error) {
       return res.status(500).json({ message: "Internal server error" });
     }

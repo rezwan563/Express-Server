@@ -11,8 +11,12 @@ app
 .route('/')
 .get((req, res) => res.status(200).send('Hello World'))
 
-
+app.use((req, res, next) =>{
+    console.log(`Request reached on ${req.path}`)
+    next()
+})
 // Routes endpoint
+
 
 app.use('/api/v1/student', studentRoute);
 
