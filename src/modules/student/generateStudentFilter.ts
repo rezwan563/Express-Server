@@ -35,7 +35,7 @@ const generateStudentFilter = (query: any) => {
     };
   }
   if (query.contactNumber) {
-    filter.address = Number(query.contactNumber);
+    filter.address = query.contactNumber;
   }
   if (query.email) {
     filter.email = {
@@ -47,7 +47,7 @@ const generateStudentFilter = (query: any) => {
     filter.guardianName = query.guardianName;
   }
   if (query.guardianContact) {
-    filter.guardianContact = Number(query.guardianContact);
+    filter.guardianContact = query.guardianContact;
   }
   if (query.studentStatus) {
     filter.studentStatus = query.studentStatus;

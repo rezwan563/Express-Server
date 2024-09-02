@@ -1,4 +1,5 @@
 import prisma from "../../../prisma/client";
+import enablePagination from "./enablePagination";
 import generateStudentFilter from "./generateStudentFilter";
 
 class StudentService {
@@ -10,8 +11,23 @@ class StudentService {
     if (id) return prisma.student.findUnique({ where: { id } });
     else if (query) {
       const filter = generateStudentFilter(query);
-      return prisma.student.findMany({ where: filter });
+      const { page, dataPerPage, skip, take } = enablePagination(query);
+      const student = await prisma.student.findMany({
+        where: filter,
+        skip,
+        take,
+      });
+      const totalStudents = await prisma.student.count({
+        where: filter,
+      });
+      return {
+        student,
+        totalStudents,
+        currentPage: page,
+        totalPages: Math.ceil(totalStudents / dataPerPage),
+      };
     } else {
+      console.log("seraching for students");
       return prisma.student.findMany();
     }
   }

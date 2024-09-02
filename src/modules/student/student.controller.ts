@@ -18,23 +18,23 @@ class StudentController {
   async getStudent(req: Request, res: Response) {
     const id = Number(req.params.id);
     const query = req.query;
-    let student;
+    let result;
 
     try {
       if (id) {
-        student = await studentService.getStudent(id);
-        return res.status(200).json({ message: "Student found", student });
+        result = await studentService.getStudent(id);
+        return res.status(200).json({ message: "Student found", result });
       } else {
-        student = await studentService.getStudent(undefined, query);
-        if (Array.isArray(student) && student[0]) {
+        result = await studentService.getStudent(undefined, query);
+        if (result && Object.keys(result).length > 0) {
           return res
             .status(200)
-            .json({ message: "Student list found", student });
+            .json({ message: "Student list found", result });
         }
         return res.status(200).json({ message: "No student found" });
       }
     } catch (error) {
-      return res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Internal server error", error: error });
     }
   }
 
