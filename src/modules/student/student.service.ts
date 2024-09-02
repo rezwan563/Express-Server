@@ -27,7 +27,6 @@ class StudentService {
         totalPages: Math.ceil(totalStudents / dataPerPage),
       };
     } else {
-      console.log("seraching for students");
       return prisma.student.findMany();
     }
   }

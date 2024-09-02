@@ -25,8 +25,21 @@ const generateStudentFilter = (query: any) => {
   if (query.gradeLevel) {
     filter.gradeLevel = query.gradeLevel;
   }
-  if (query.enrollmentDate) {
-    filter.enrollmentDate = query.enrollmentDate;
+  if (query.startDate && query.endDate) {
+    filter.enrollmentDate = {
+      gte: new Date(query.startDate),
+      lte: new Date(query.endDate)
+    };
+  }
+  else if(query.startDate){
+    filter.enrollmentDate ={
+      gte: new Date(query.startDate)
+    }
+  }
+  else if(query.endDate){
+    filter.enrollmentDate ={
+      lte: new Date(query.endDate)
+    }
   }
   if (query.address) {
     filter.address = {
