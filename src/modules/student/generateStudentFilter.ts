@@ -22,8 +22,8 @@ const generateStudentFilter = (query: any) => {
   if (query.photo) {
     filter.photo = query.photo;
   }
-  if (query.gradeLevel) {
-    filter.gradeLevel = query.gradeLevel;
+  if (query.semester) {
+    filter.semester = query.semester;
   }
   if (query.startDate && query.endDate) {
     filter.enrollmentDate = {
