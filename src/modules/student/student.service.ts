@@ -1,6 +1,6 @@
 import prisma from "../../../prisma/client";
-import enablePagination from "./enablePagination";
-import generateStudentFilter from "./generateStudentFilter";
+import enablePagination from "../../utils/enablePagination";
+import generateStudentFilter from "../../utils/generateStudentFilter";
 
 class StudentService {
   async createStudent(data: any) {
